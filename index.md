@@ -39,13 +39,13 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 # File Permissions
 
-#File System Integrity
+# File System Integrity
 
 *       We want to know if critical files change on our filesystems
-*       Various tools to compare file checksum
-*      * Tripwire (Commercial)
-*      * OSSEC (Open Source)
-*      * Distribution built-in ```(rpm -Va)```
+*       Various tools to compare file checksums:
+* Tripwire (Commercial)
+* OSSEC (Open Source)
+* Distribution built-in ```(rpm -Va)```
 
 # Processes &amp; Sockets
 
@@ -60,6 +60,7 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 *       Default Allow (or can be configred to default deny)
 *       Various chains (INPUT, OUTPUT, FORWARD by default)
 *       Can create other chains chains for custom rulesets
+*       Can interact with iptables directly or use a front end such as shorewall, others
 
 #  Block All Inbound
 
@@ -75,11 +76,12 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 * Most logs live in /var/log/
 * Most logs are plain text, but some are binary (wtmpx, utmpx, lastlog)
-** /var/log/messages : major events, failed logins, SU to root
-** /var/log/secure : failed logins, added / deleted users
-** /var/log/maillog : mail system logs
-** /var/log/wtmpx : Who is currently logged in and from where. Use the 'w' command
-** /var/log/utmpx : History of logins and reboots of the system. Use the 'last' command
+* /var/log/messages : major events, failed logins, SU to root
+* /var/log/secure : failed logins, added / deleted users
+* /var/log/maillog : mail system logs
+* /var/log/wtmpx : Who is currently logged in and from where. Use the 'w' command
+* /var/log/utmpx : History of logins and reboots of the system. Use the 'last' command
+* Logs should be reviewed or watched by another process such as OSSEC
 
 # SELinux (Security-Enhanced Linux)
 
@@ -93,6 +95,7 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 *       Small updates usually easier than large updates
 *       Redhat/Centos => ```yum update```
 *       Debian/Ubuntu => ```apt-get update; apt-get upgrade```
+*       Most distros have automatic update mechanism.  This may or may not be appropriate
 
 # Questions / End
 
