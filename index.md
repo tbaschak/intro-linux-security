@@ -42,10 +42,10 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 #File System Integrity
 
 *       We want to know if critical files change on our filesystems
-*       Various tools to compare file checksums
-        ** Tripwire (Commercial)
-        ** OSSEC (Open Source)
-        ** Distribution built-in ```(rpm -Va)```
+*       Various tools to compare file checksum
+*      * Tripwire (Commercial)
+*      * OSSEC (Open Source)
+*      * Distribution built-in ```(rpm -Va)```
 
 # Processes &amp; Sockets
 
