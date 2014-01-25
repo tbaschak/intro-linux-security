@@ -34,7 +34,6 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 *       Define minimum password lengths, complexity, and validity period
 *       Passwords should always be stored salted and hashed
 *       Low-length passwords can be cracked programmatically in surprisingly low time
-        *	Especially if logs not monitored
 *       Local authentication can give access to other services (SMTP credentials)
 
 # File Permissions
