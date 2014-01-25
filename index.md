@@ -1,11 +1,19 @@
-% Intro Linux Security
+% Introduction to Linux Security 2
 % Jared Bater &amp; Theo Baschak
-% CCDC Prep January 25, 2014
+% CDC Prep January 25, 2014
 
 
 # Online HTML5 Slides
 
 Presentation source/download available at [github.com/tbaschak/intro-linux-security](https://github.com/tbaschak/intro-linux-security)
+
+# Introductions
+
+# Funny Joke
+
+*	You have been infected by the UNIX version of the I LOVE YOU virus.
+*	This virus operates on the honor system.
+*	Please delete a few hundred random files from your hard drive and forward this message to everyone you know.
 
 # Topics to be covered
 

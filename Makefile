@@ -3,6 +3,7 @@ PDFOBJS		= $(SRCS:.md=.pdf)
 SLIDEOBJS	= $(SRCS:.md=.html)
 PANDOC		= pandoc
 PFLAGS		= -t beamer
+ORIGIN		= github
 
 .PHONY: all clean slides pdf 
 
@@ -32,12 +33,12 @@ cleanslides:
 gh-pages: slides pdf
 	@git add $(PDFOBJS) $(SLIDEOBJS)
 	@git commit -m 'generate latest slides via Makefile'
-	@git push -u origin master
+	@git push -u $(ORIGIN) master
 	@git checkout gh-pages
 	@git checkout master -- $(SLIDEOBJS)
 	@git checkout master -- $(PDFOBJS)
 	@git add $(PDFOBJS) $(SLIDEOBJS)
 	@git commit -m 'pull in latest generated slides from master branch'
-	@git push -u origin gh-pages
+	@git push -u $(ORIGIN) gh-pages
 	@git checkout master
 	@echo Slides generated and pushed to gh-pages branch
