@@ -92,13 +92,13 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 # Logs
 
-*	Most logs live in /var/log/
+*	Most logs live in ```/var/log/```
 *	Most logs are plain text, but some are binary (wtmpx, utmpx, lastlog)
-*	/var/log/messages : major events, failed logins, SU to root
-*	/var/log/secure : failed logins, added / deleted users
-*	/var/log/maillog : mail system logs
-*	/var/log/wtmpx : Who is currently logged in and from where. Use the 'w' command
-*	/var/log/utmpx : History of logins and reboots of the system. Use the 'last' command
+*	```/var/log/messages``` : major events, failed logins, SU to root
+*	```/var/log/secure``` : failed logins, added / deleted users
+*	```/var/log/maillog``` : mail system logs
+*	```/var/log/wtmpx``` : Who is currently logged in and from where. Use the ```w``` command
+*	```/var/log/utmpx``` : History of logins and reboots of the system. Use the ```last``` command
 *	Logs should be reviewed or watched by another process such as OSSEC
 
 # SELinux (Security-Enhanced Linux)
