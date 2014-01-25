@@ -61,7 +61,15 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 *	An IPC or Unix Domain socket is a special type of file for exchanging data between processes
 *	Sockets, and which PIDs own them can be monitored using ```lsof```
 
+
 # Boot Process
+
+*	Boot loader: LILO / Grub
+*	1st Stage: Master Boot Loader
+*	2nd Stage: Kernel loader
+*	Kernel initializes and manages hardware resources
+*	Initial process (init) - parent of all processes (PID 1)
+*	RC scripts (Run Condition) executes scripts for appropriate run level
 
 # Run Levels
 
@@ -111,6 +119,7 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 *	Fine-grained control over processes, files, sockets, etc
 *	Enhances existing security in Linux
 *	http://stopdisablingselinux.com
+*	See also AppArmor ("Application Armor")
 
 # Updating
 
