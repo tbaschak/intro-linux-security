@@ -68,10 +68,9 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 *       If you don't need it, turn it off
 *       Patch a disabled service? (Hint: Yes)
-*       The 'service' command stops/starts services (System V init scripts)
-*       the 'chkconfig' command sets services to start at boot
-*       Some newer distros use systemd(1) to manage services and systems
-
+*       The ```service``` command stops/starts services (System V init scripts)
+*       the ```chkconfig``` command sets services to start at boot
+*       Some newer distros use ```systemd(1)``` to manage services and systems
 
 # iptables (Firewalls)
 
