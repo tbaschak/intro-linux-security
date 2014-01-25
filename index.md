@@ -75,7 +75,7 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 *       Default Allow (or can be configred to default deny)
 *       Various chains (INPUT, OUTPUT, FORWARD by default)
 *       Can create other chains chains for custom rulesets
-*       Can interact with iptables directly or use a front end such as shorewall, others
+*       Can interact with iptables directly or use a front end such as ufw, Shorewall, FirewallD, others
 
 #  Block All Inbound
 
