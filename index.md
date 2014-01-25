@@ -34,7 +34,7 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 *       Define minimum password lengths, complexity, and validity period
 *       Passwords should always be stored salted and hashed
 *       Low-length passwords can be cracked programmatically in surprisingly low time
-        *       Especially if logs not monitored
+        *	Especially if logs not monitored
 *       Local authentication can give access to other services (SMTP credentials)
 
 # File Permissions
@@ -43,11 +43,17 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 *       We want to know if critical files change on our filesystems
 *       Various tools to compare file checksums:
-* Tripwire (Commercial)
-* OSSEC (Open Source)
-* Distribution built-in ```(rpm -Va)```
+*	Tripwire (Commercial)
+*	OSSEC (Open Source)
+*	Distribution built-in ```(rpm -Va)```
 
 # Processes &amp; Sockets
+
+*	A process is a program running on a Linux system
+	*	Identifed by its Process Identifier or PID
+	*	Can be listed using ```ps```
+*	An IPC or Unix Domain socket is a special type of file for exchanging data between processes
+*	Sockets, and which PIDs own them can be monitored using ```lsof```
 
 # Boot Process
 
@@ -74,21 +80,21 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 # Logs
 
-* Most logs live in /var/log/
-* Most logs are plain text, but some are binary (wtmpx, utmpx, lastlog)
-* /var/log/messages : major events, failed logins, SU to root
-* /var/log/secure : failed logins, added / deleted users
-* /var/log/maillog : mail system logs
-* /var/log/wtmpx : Who is currently logged in and from where. Use the 'w' command
-* /var/log/utmpx : History of logins and reboots of the system. Use the 'last' command
-* Logs should be reviewed or watched by another process such as OSSEC
+*	Most logs live in /var/log/
+*	Most logs are plain text, but some are binary (wtmpx, utmpx, lastlog)
+*	/var/log/messages : major events, failed logins, SU to root
+*	/var/log/secure : failed logins, added / deleted users
+*	/var/log/maillog : mail system logs
+*	/var/log/wtmpx : Who is currently logged in and from where. Use the 'w' command
+*	/var/log/utmpx : History of logins and reboots of the system. Use the 'last' command
+*	Logs should be reviewed or watched by another process such as OSSEC
 
 # SELinux (Security-Enhanced Linux)
 
-* Mandatory Access Control (MAC vs. DAC)
-* Fine-grained control over processes, files, sockets, etc
-* Enhances existing security in Linux
-* ```http://stopdisablingselinux.com```
+*	Mandatory Access Control (MAC vs. DAC)
+*	Fine-grained control over processes, files, sockets, etc
+*	Enhances existing security in Linux
+*	http://stopdisablingselinux.com
 
 # Updating
 
