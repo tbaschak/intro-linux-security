@@ -59,6 +59,10 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 # Run Levels
 
+*	0 -> Halt, 1 -> Single User, 2 -> Multi User (without NFS), 3 -> Multi User 4 -> Unused, 5 -> Multi User (graphical login), 6 -> Reboot
+*	Can be changed using ```telinit```
+*	Servers usually run at 3, Desktops at 5
+
 # Services
 
 # iptables (Firewalls)
