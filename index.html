@@ -121,6 +121,14 @@ code > span.er { color: #ff0000; font-weight: bold; }
 </section>
 <section id="boot-process" class="slide level1">
 <h1>Boot Process</h1>
+<ul>
+<li>Boot loader: LILO / Grub</li>
+<li>1st Stage: Master Boot Loader</li>
+<li>2nd Stage: Kernel loader</li>
+<li>Kernel initializes and manages hardware resources</li>
+<li>Initial process (init) - parent of all processes (PID 1)</li>
+<li>RC scripts (Run Condition) executes scripts for appropriate run level</li>
+</ul>
 </section>
 <section id="run-levels" class="slide level1">
 <h1>Run Levels</h1>
@@ -177,6 +185,7 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <li>Fine-grained control over processes, files, sockets, etc</li>
 <li>Enhances existing security in Linux</li>
 <li>http://stopdisablingselinux.com</li>
+<li>See also AppArmor (“Application Armor”)</li>
 </ul>
 </section>
 <section id="updating" class="slide level1">
