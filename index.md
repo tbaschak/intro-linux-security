@@ -43,10 +43,10 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 *       We want to know if critical files change on our filesystems
 *       Various tools to compare file checksums:
-* Tripwire (Commercial)
-* OSSEC (Open Source)
-* AIDE (Open Source)
-* Distribution built-in ```(rpm -Va)```
+	* Tripwire (Commercial)
+	* OSSEC (Open Source)
+	* AIDE (Open Source)
+	* Distribution built-in ```(rpm -Va)```
 
 
 # Processes &amp; Sockets
