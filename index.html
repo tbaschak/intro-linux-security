@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Jared Bater &amp; Theo Baschak" />
+  <title>Intro Linux Security</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="reveal.js/css/reveal.min.css"/>
+    <style type="text/css">code{white-space: pre;}</style>
+    <style type="text/css">
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; }
+code > span.dt { color: #902000; }
+code > span.dv { color: #40a070; }
+code > span.bn { color: #40a070; }
+code > span.fl { color: #40a070; }
+code > span.ch { color: #4070a0; }
+code > span.st { color: #4070a0; }
+code > span.co { color: #60a0b0; font-style: italic; }
+code > span.ot { color: #007020; }
+code > span.al { color: #ff0000; font-weight: bold; }
+code > span.fu { color: #06287e; }
+code > span.er { color: #ff0000; font-weight: bold; }
+    </style>
+    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+  <link rel="stylesheet" media="print" href="reveal.js/css/print/pdf.css" />
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section>
+    <h1 class="title">Intro Linux Security</h1>
+    <h2 class="author">Jared Bater &amp; Theo Baschak</h2>
+    <h3 class="date">CCDC Prep January 25, 2014</h3>
+</section>
+
+<section id="online-html5-slides" class="slide level1">
+<h1>Online HTML5 Slides</h1>
+<p>Presentation source/download available at <a href="https://github.com/tbaschak/intro-linux-security">github.com/tbaschak/intro-linux-security</a></p>
+</section>
+<section id="topics-to-be-covered" class="slide level1">
+<h1>Topics to be covered</h1>
+<ul>
+<li>Good Practices</li>
+<li>Passwords</li>
+<li>File System Integrity</li>
+<li>Processes and sockets (ps and netstat)</li>
+<li>Boot process</li>
+<li>Run levels</li>
+<li>Services</li>
+<li>iptables</li>
+<li>Logs</li>
+<li>SE Linux</li>
+<li>Updating (APT / Yum, etc)</li>
+</ul>
+</section>
+<section id="good-practices" class="slide level1">
+<h1>Good Practices</h1>
+<ul>
+<li>Check signatures on packages/sources (GPG, MD5, SHA)</li>
+<li>Use sudo instead of su, or logging in as root</li>
+<li>Don’t use/offer plaintext authenticated services</li>
+<li>Don’t add . to root’s $PATH</li>
+</ul>
+</section>
+<section id="passwords" class="slide level1">
+<h1>Passwords</h1>
+<ul>
+<li>Define minimum password lengths, complexity, and validity period</li>
+<li>Passwords should always be stored salted and hashed</li>
+<li>Low-length passwords can be cracked programmatically in surprisingly low time</li>
+<li>Local authentication can give access to other services (SMTP credentials)</li>
+</ul>
+</section>
+<section id="file-system-integrity" class="slide level1">
+<h1>File System Integrity</h1>
+<ul>
+<li>We want to know if critical files change on our filesystems</li>
+<li>Various tools to compare file checksums:
+<ul>
+<li>Tripwire (Commercial)</li>
+<li>OSSEC (Open Source)</li>
+<li>AIDE (Open Source)</li>
+<li>Distribution built-in <code>(rpm -Va)</code></li>
+</ul></li>
+</ul>
+</section>
+<section id="processes-sockets" class="slide level1">
+<h1>Processes &amp; Sockets</h1>
+<ul>
+<li>A process is a program running on a Linux system
+<ul>
+<li>Identifed by its Process Identifier or PID</li>
+<li>Can be listed using <code>ps</code></li>
+</ul></li>
+<li>An IPC or Unix Domain socket is a special type of file for exchanging data between processes</li>
+<li>Sockets, and which PIDs own them can be monitored using <code>lsof</code></li>
+</ul>
+</section>
+<section id="boot-process" class="slide level1">
+<h1>Boot Process</h1>
+</section>
+<section id="run-levels" class="slide level1">
+<h1>Run Levels</h1>
+<ul>
+<li>0 -&gt; Halt, 1 -&gt; Single User, 2 -&gt; Multi User (without NFS), 3 -&gt; Multi User 4 -&gt; Unused, 5 -&gt; Multi User (graphical login), 6 -&gt; Reboot</li>
+<li>Can be changed using <code>telinit</code></li>
+<li>Servers usually run at 3, Desktops at 5</li>
+</ul>
+</section>
+<section id="services" class="slide level1">
+<h1>Services</h1>
+<ul>
+<li>If you don’t need it, turn it off</li>
+<li>Patch a disabled service? (Hint: Yes)</li>
+<li>The <code>service</code> command stops/starts services (System V init scripts)</li>
+<li>the <code>chkconfig</code> command sets services to start at boot</li>
+<li>Some newer distros use <code>systemd(1)</code> to manage services and systems</li>
+</ul>
+</section>
+<section id="iptables-firewalls" class="slide level1">
+<h1>iptables (Firewalls)</h1>
+<ul>
+<li>Default Allow (or can be configred to default deny)</li>
+<li>Various chains (INPUT, OUTPUT, FORWARD by default)</li>
+<li>Can create other chains chains for custom rulesets</li>
+<li>Can interact with iptables directly or use a front end such as ufw, Shorewall, FirewallD, others</li>
+</ul>
+</section>
+<section id="block-all-inbound" class="slide level1">
+<h1>Block All Inbound</h1>
+<pre class="sourceCode bash"><code class="sourceCode bash"><span class="kw">/sbin/iptables</span> -P INPUT DROP
+<span class="kw">/sbin/iptables</span> -P FORWARD DROP
+<span class="kw">/sbin/iptables</span> -P OUTPUT ACCEPT
+<span class="kw">/sbin/iptables</span> -A INPUT -m state --state NEW,ESTABLISHED -j ACCEPT
+<span class="kw">/sbin/iptables</span> -L -v -n</code></pre>
+</section>
+<section id="logs" class="slide level1">
+<h1>Logs</h1>
+<ul>
+<li>Most logs live in <code>/var/log/</code></li>
+<li>Most logs are plain text, but some are binary (wtmpx, utmpx, lastlog)</li>
+<li><code>/var/log/messages</code> : major events, failed logins, SU to root</li>
+<li><code>/var/log/secure</code> : failed logins, added / deleted users</li>
+<li><code>/var/log/maillog</code> : mail system logs</li>
+<li><code>/var/log/wtmpx</code> : Who is currently logged in and from where. Use the <code>w</code> command</li>
+<li><code>/var/log/utmpx</code> : History of logins and reboots of the system. Use the <code>last</code> command</li>
+<li>Logs should be reviewed or watched by another process such as OSSEC</li>
+</ul>
+</section>
+<section id="selinux-security-enhanced-linux" class="slide level1">
+<h1>SELinux (Security-Enhanced Linux)</h1>
+<ul>
+<li>Mandatory Access Control (MAC vs. DAC)</li>
+<li>Fine-grained control over processes, files, sockets, etc</li>
+<li>Enhances existing security in Linux</li>
+<li>http://stopdisablingselinux.com</li>
+</ul>
+</section>
+<section id="updating" class="slide level1">
+<h1>Updating</h1>
+<ul>
+<li>Small updates usually easier than large updates</li>
+<li>Redhat/Centos =&gt; <code>yum update</code></li>
+<li>Debian/Ubuntu =&gt; <code>apt-get update; apt-get upgrade</code></li>
+<li>Most distros have automatic update mechanism. This may or may not be appropriate</li>
+</ul>
+</section>
+<section id="questions-end" class="slide level1">
+<h1>Questions / End</h1>
+<ul>
+<li>Question &amp; Answer period as time permits.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>Presentation source/download available at <a href="https://github.com/tbaschak/intro-linux-security">github</a></li>
+</ul>
+</div>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.min.js"></script>
+
+  <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+        theme: 'default', // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+]});
+    </script>
+  </body>
+</html>
