@@ -11,7 +11,6 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 *       Good Practices
 *       Passwords
-*       File Permissions
 *       File System Integrity
 *       Processes and sockets (ps and netstat)
 *       Boot process
@@ -35,8 +34,6 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 *       Passwords should always be stored salted and hashed
 *       Low-length passwords can be cracked programmatically in surprisingly low time
 *       Local authentication can give access to other services (SMTP credentials)
-
-# File Permissions
 
 # File System Integrity
 
