@@ -43,9 +43,11 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 *       We want to know if critical files change on our filesystems
 *       Various tools to compare file checksums:
-*	Tripwire (Commercial)
-*	OSSEC (Open Source)
-*	Distribution built-in ```(rpm -Va)```
+* Tripwire (Commercial)
+* OSSEC (Open Source)
+* AIDE (Open Source)
+* Distribution built-in ```(rpm -Va)```
+
 
 # Processes &amp; Sockets
 
@@ -65,12 +67,19 @@ Presentation source/download available at [github.com/tbaschak/intro-linux-secur
 
 # Services
 
+*       If you don't need it, turn it off
+*       Patch a disabled service? (Hint: Yes)
+*       The 'service' command stops/starts services (System V init scripts)
+*       the 'chkconfig' command sets services to start at boot
+*       Some newer distros use systemd(1) to manage services and systems
+
+
 # iptables (Firewalls)
 
 *       Default Allow (or can be configred to default deny)
 *       Various chains (INPUT, OUTPUT, FORWARD by default)
 *       Can create other chains chains for custom rulesets
-*       Can interact with iptables directly or use a front end such as shorewall, others
+*       Can interact with iptables directly or use a front end such as ufw, Shorewall, FirewallD, others
 
 #  Block All Inbound
 
