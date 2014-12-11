@@ -1,4 +1,4 @@
-SRCS		= index.md
+SRCS		= intro-linux-security2.md
 PDFOBJS		= $(SRCS:.md=.pdf)
 SLIDEOBJS	= $(SRCS:.md=.html)
 PANDOC		= pandoc
@@ -15,12 +15,10 @@ all: clean slides $(PDFOBJS)
 
 pdf: cleanpdf $(PDFOBJS)
 
-slides: cleanslides
-#	pandoc -s -S -i -t dzslides --mathjax $(SRCS) -o $(SLIDEOBJS)
-#	pandoc --self-contained -s -S -t slidy --mathjax $(SRCS) -o $(SLIDEOBJS)   ## nice and simple
+%.html: %.md
+	pandoc -V theme=default -s -S -t revealjs --mathjax -V revealjs-url:https://secure.ciscodude.net/vendor/reveal.js $< -o $@
 
-#	pandoc --self-contained -s -S -i -t revealjs --mathjax $(SRCS) -o $(SLIDEOBJS)
-	$(PANDOC) -V theme=default -s -S -t revealjs --mathjax $(SRCS) -o $(SLIDEOBJS)
+slides: $(SLIDEOBJS)
 
 clean: cleanpdf cleanslides
 

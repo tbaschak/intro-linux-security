@@ -8,7 +8,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <link rel="stylesheet" href="reveal.js/css/reveal.min.css"/>
+  <link rel="stylesheet" href="https://secure.ciscodude.net/vendor/reveal.js/css/reveal.min.css"/>
     <style type="text/css">code{white-space: pre;}</style>
     <style type="text/css">
 table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
@@ -29,11 +29,20 @@ code > span.al { color: #ff0000; font-weight: bold; }
 code > span.fu { color: #06287e; }
 code > span.er { color: #ff0000; font-weight: bold; }
     </style>
-    <link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
-  <link rel="stylesheet" media="print" href="reveal.js/css/print/pdf.css" />
-  <!--[if lt IE 9]>
-  <script src="reveal.js/lib/js/html5shiv.js"></script>
-  <![endif]-->
+    <link rel="stylesheet" href="https://secure.ciscodude.net/vendor/reveal.js/css/theme/simple.css" id="theme">
+    <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+    <script>
+      if( window.location.search.match( /print-pdf/gi ) ) {
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = 'https://secure.ciscodude.net/vendor/reveal.js/css/print/pdf.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+      }
+    </script>
+    <!--[if lt IE 9]>
+    <script src="https://secure.ciscodude.net/vendor/reveal.js/lib/js/html5shiv.js"></script>
+    <![endif]-->
 </head>
 <body>
   <div class="reveal">
@@ -63,42 +72,42 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section id="topics-to-be-covered" class="slide level1">
 <h1>Topics to be covered</h1>
 <ul>
-<li>Good Practices</li>
-<li>Passwords</li>
-<li>File System Integrity</li>
-<li>Processes and sockets (ps and netstat)</li>
-<li>Boot process</li>
-<li>Run levels</li>
-<li>Services</li>
-<li>iptables</li>
-<li>Logs</li>
-<li>SE Linux</li>
-<li>Updating (APT / Yum, etc)</li>
+<li><pre><code>Good Practices</code></pre></li>
+<li><pre><code>Passwords</code></pre></li>
+<li><pre><code>File System Integrity</code></pre></li>
+<li><pre><code>Processes and sockets (ps and netstat)</code></pre></li>
+<li><pre><code>Boot process</code></pre></li>
+<li><pre><code>Run levels</code></pre></li>
+<li><pre><code>Services</code></pre></li>
+<li><pre><code>iptables</code></pre></li>
+<li><pre><code>Logs</code></pre></li>
+<li><pre><code>SE Linux</code></pre></li>
+<li><pre><code>Updating (APT / Yum, etc)</code></pre></li>
 </ul>
 </section>
 <section id="good-practices" class="slide level1">
 <h1>Good Practices</h1>
 <ul>
-<li>Check signatures on packages/sources (GPG, MD5, SHA)</li>
-<li>Use sudo instead of su, or logging in as root</li>
-<li>Don’t use/offer plaintext authenticated services</li>
-<li>Don’t add . to root’s $PATH</li>
+<li><pre><code>Check signatures on packages/sources (GPG, MD5, SHA)</code></pre></li>
+<li><pre><code>Use sudo instead of su, or logging in as root</code></pre></li>
+<li><pre><code>Don&#39;t use/offer plaintext authenticated services</code></pre></li>
+<li><pre><code>Don&#39;t add . to root&#39;s $PATH</code></pre></li>
 </ul>
 </section>
 <section id="passwords" class="slide level1">
 <h1>Passwords</h1>
 <ul>
-<li>Define minimum password lengths, complexity, and validity period</li>
-<li>Passwords should always be stored salted and hashed</li>
-<li>Low-length passwords can be cracked programmatically in surprisingly low time</li>
-<li>Local authentication can give access to other services (SMTP credentials)</li>
+<li><pre><code>Define minimum password lengths, complexity, and validity period</code></pre></li>
+<li><pre><code>Passwords should always be stored salted and hashed</code></pre></li>
+<li><pre><code>Low-length passwords can be cracked programmatically in surprisingly low time</code></pre></li>
+<li><pre><code>Local authentication can give access to other services (SMTP credentials)</code></pre></li>
 </ul>
 </section>
 <section id="file-system-integrity" class="slide level1">
 <h1>File System Integrity</h1>
 <ul>
-<li>We want to know if critical files change on our filesystems</li>
-<li>Various tools to compare file checksums:
+<li><pre><code>We want to know if critical files change on our filesystems</code></pre></li>
+<li><pre><code>Various tools to compare file checksums:</code></pre>
 <ul>
 <li>Tripwire (Commercial)</li>
 <li>OSSEC (Open Source)</li>
@@ -141,20 +150,20 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section id="services" class="slide level1">
 <h1>Services</h1>
 <ul>
-<li>If you don’t need it, turn it off</li>
-<li>Patch a disabled service? (Hint: Yes)</li>
-<li>The <code>service</code> command stops/starts services (System V init scripts)</li>
-<li>the <code>chkconfig</code> command sets services to start at boot</li>
-<li>Some newer distros use <code>systemd(1)</code> to manage services and systems</li>
+<li><pre><code>If you don&#39;t need it, turn it off</code></pre></li>
+<li><pre><code>Patch a disabled service? (Hint: Yes)</code></pre></li>
+<li><pre><code>The ```service``` command stops/starts services (System V init scripts)</code></pre></li>
+<li><pre><code>the ```chkconfig``` command sets services to start at boot</code></pre></li>
+<li><pre><code>Some newer distros use ```systemd(1)``` to manage services and systems</code></pre></li>
 </ul>
 </section>
 <section id="iptables-firewalls" class="slide level1">
 <h1>iptables (Firewalls)</h1>
 <ul>
-<li>Default Allow (or can be configred to default deny)</li>
-<li>Various chains (INPUT, OUTPUT, FORWARD by default)</li>
-<li>Can create other chains chains for custom rulesets</li>
-<li>Can interact with iptables directly or use a front end such as ufw, Shorewall, FirewallD, others</li>
+<li><pre><code>Default Allow (or can be configred to default deny)</code></pre></li>
+<li><pre><code>Various chains (INPUT, OUTPUT, FORWARD by default)</code></pre></li>
+<li><pre><code>Can create other chains chains for custom rulesets</code></pre></li>
+<li><pre><code>Can interact with iptables directly or use a front end such as ufw, Shorewall, FirewallD, others</code></pre></li>
 </ul>
 </section>
 <section id="block-all-inbound" class="slide level1">
@@ -191,28 +200,29 @@ code > span.er { color: #ff0000; font-weight: bold; }
 <section id="updating" class="slide level1">
 <h1>Updating</h1>
 <ul>
-<li>Small updates usually easier than large updates</li>
-<li>Redhat/Centos =&gt; <code>yum update</code></li>
-<li>Debian/Ubuntu =&gt; <code>apt-get update; apt-get upgrade</code></li>
-<li>Most distros have automatic update mechanism. This may or may not be appropriate</li>
+<li><pre><code>Small updates usually easier than large updates</code></pre></li>
+<li><pre><code>Redhat/Centos =&gt; ```yum update```</code></pre></li>
+<li><pre><code>Debian/Ubuntu =&gt; ```apt-get update; apt-get upgrade```</code></pre></li>
+<li><pre><code>Most distros have automatic update mechanism.  This may or may not be appropriate</code></pre></li>
 </ul>
 </section>
 <section id="questions-end" class="slide level1">
 <h1>Questions / End</h1>
 <ul>
-<li>Question &amp; Answer period as time permits.</li>
+<li><pre><code>Question &amp; Answer period as time permits.</code></pre></li>
 </ul>
 <div class="fragment">
 <ul>
-<li>Presentation source/download available at <a href="https://github.com/tbaschak/intro-linux-security">github</a></li>
+<li><pre><code>Presentation source/download available at [github](https://github.com/tbaschak/intro-linux-security)</code></pre></li>
 </ul>
 </div>
 </section>
     </div>
   </div>
 
-  <script src="reveal.js/lib/js/head.min.js"></script>
-  <script src="reveal.js/js/reveal.min.js"></script>
+
+  <script src="https://secure.ciscodude.net/vendor/reveal.js/lib/js/head.min.js"></script>
+  <script src="https://secure.ciscodude.net/vendor/reveal.js/js/reveal.min.js"></script>
 
   <script>
 
@@ -228,12 +238,12 @@ code > span.er { color: #ff0000; font-weight: bold; }
 
         // Optional libraries used to extend on reveal.js
         dependencies: [
-          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
-          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-          { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
-//          { src: 'reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
-//          { src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+          { src: 'https://secure.ciscodude.net/vendor/reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'https://secure.ciscodude.net/vendor/reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'https://secure.ciscodude.net/vendor/reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+//          { src: 'https://secure.ciscodude.net/vendor/reveal.js/plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; }, }
+//          { src: 'https://secure.ciscodude.net/vendor/reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
 ]});
     </script>
-  </body>
+    </body>
 </html>
